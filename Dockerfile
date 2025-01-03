@@ -1,5 +1,9 @@
 FROM oven/bun:latest
-ADD ./ ./
-RUN mkdir -p /data
-WORKDIR /data
-CMD ["bun", "run", "/home/bun/app/src/index.js"]
+
+WORKDIR /app
+COPY . .
+
+ENV LURKER_PORT=3000
+
+EXPOSE 3000
+CMD ["bun", "run", "src/index.js"]
